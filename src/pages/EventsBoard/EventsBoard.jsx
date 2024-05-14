@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchEvents } from '../../myRedux/eventsSlise/operations';
 
 const EventsBoard = () => {
-  return (
-    <div>EventsBoard</div>
-  )
-}
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
 
-export default EventsBoard
+  return <div>Event board</div>;
+};
+
+export default EventsBoard;
