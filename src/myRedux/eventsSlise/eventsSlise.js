@@ -14,7 +14,11 @@ export const eventsSlise = createSlice({
       state.events = payload;
     });
   },
-  selectors: {},
+  selectors: {
+    selectEvents: state => state.events,
+  },
 });
 
 export const eventsReducer = eventsSlise.reducer;
+
+export const { selectEvents } = eventsSlise.selectors;

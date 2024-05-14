@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import 'reset-css';
+import 'modern-normalize/modern-normalize.css';
 import './App.css';
 import Layout from './Layout/Layout';
 import { lazy } from 'react';
@@ -12,8 +14,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<EventsBoard />} />
-        <Route path="/registration" element={<EventRegistration />} />
-        <Route path="/participants" element={<EventParticipant />} />
+        <Route path="/registration/:id" element={<EventRegistration />} />
+        <Route path="/participants/:id" element={<EventParticipant />} />
       </Route>
     </Routes>
   );
