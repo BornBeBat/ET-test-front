@@ -1,8 +1,31 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getEventById, selectIsLoadingParticipant, selectTitle } from '../../myRedux';
+import { useEffect } from 'react';
+
+import s from './EventParticipant.module.css';
+import { ParticipantList } from '../../components';
 
 const EventParticipant = () => {
-  return (
-    <div>EventParticipant</div>
-  )
-}
+  const { id } = useParams();
+  const title = useSelector(selectTitle);
+  const isLoading = useSelector(selectIsLoadingParticipant);
+  const dispatch = useDispatch();
 
-export default EventParticipant
+  useEffect(() => {
+    dispatch(getEventById(id));
+  }, [dispatch, id]);
+
+  return (
+    <>
+      {!isLoading && (
+        <>
+          <h2 className={s.title}>&quot;{title}&quot; participants</h2>
+          <ParticipantList />
+        </>
+      )}
+    </>
+  );
+};
+
+export default EventParticipant;

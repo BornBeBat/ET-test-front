@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { participantApi } from '../../api';
+import { eventApi, participantApi } from '../../api';
 
 export const registerParticipant = createAsyncThunk(
   'participant/registerParticipant',
@@ -12,3 +12,12 @@ export const registerParticipant = createAsyncThunk(
     }
   }
 );
+
+export const getEventById = createAsyncThunk('participant/getEventById', async (id, thunkAPI) => {
+  try {
+    const response = await eventApi.getEventById(id);
+    return response.result;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

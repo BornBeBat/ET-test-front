@@ -4,7 +4,7 @@ import { participantReducer } from './participantSlise';
 
 const rootReducer = combineReducers({
   events: eventsReducer,
-  participant: participantReducer,
+  participants: participantReducer,
 });
 
 export const store = configureStore({
