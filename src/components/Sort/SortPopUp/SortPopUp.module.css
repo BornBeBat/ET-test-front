@@ -6,9 +6,16 @@
   flex-direction: column;
   align-items: start;
   gap: 4px;
+  background-color: bisque;
+  padding: 12px 8px;
+  border: 1px solid black;
 }
 
 .button {
   width: 100%;
   text-align: start;
+  cursor: pointer;
+  &:disabled {
+    cursor: auto;
+  }
 }

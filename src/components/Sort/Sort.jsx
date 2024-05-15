@@ -7,15 +7,14 @@ export const Sort = () => {
   const [isOpenPopUp, setIsOpenPopUp] = useState(false);
   const wrapper = useRef();
 
-  const handleOpen = e => {
-    if (e.target.closest('ul')) return;
+  const handleOpen = () => {
     setIsOpenPopUp(!isOpenPopUp);
   };
 
   return (
-    <div className={s.wrapper}>
-      <button type="button" onClick={handleOpen} ref={wrapper}>
-        <p>Sort</p>
+    <div className={s.wrapper} ref={wrapper}>
+      <button type="button" onClick={handleOpen}>
+        Sort
       </button>
       {isOpenPopUp && <SortPopUp boxRef={wrapper} setIsOpenPopUp={setIsOpenPopUp} />}
     </div>

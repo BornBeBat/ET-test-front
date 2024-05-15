@@ -64,7 +64,7 @@ export const RegistrationForm = () => {
         {errors.from?.message && <p className={s.error}>{errors.from?.message}</p>}
       </fieldset>
 
-      <button>Sent</button>
+      <button>Register</button>
     </form>
   );
 };

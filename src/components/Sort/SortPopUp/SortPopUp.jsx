@@ -10,7 +10,8 @@ export const SortPopUp = ({ setIsOpenPopUp, boxRef }) => {
 
   useEffect(() => {
     const handleCloseList = e => {
-      if (e.target.closest('button') !== boxRef.current) {
+      console.log(e.target.closest('div'));
+      if (e.target.closest('div') !== boxRef.current) {
         setIsOpenPopUp(false);
       }
     };
@@ -38,12 +39,18 @@ export const SortPopUp = ({ setIsOpenPopUp, boxRef }) => {
     await dispatch(updateFilter(data));
 
     dispatch(fetchEvents({ page: 1, ...data }));
+    setIsOpenPopUp(false);
   };
   return (
     <ul className={s.wrapper}>
       {sort.map((el, id) => (
         <li key={id}>
-          <button className={s.button} onClick={() => handleClick(el.value)} type="button">
+          <button
+            className={s.button}
+            onClick={() => handleClick(el.value)}
+            type="button"
+            disabled={el.value === filter}
+          >
             {el.title}
           </button>
         </li>

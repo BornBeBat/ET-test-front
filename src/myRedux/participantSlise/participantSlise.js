@@ -4,6 +4,7 @@ import { getEventById, registerParticipant } from './operations';
 const initialState = {
   title: '',
   participants: [],
+  filter: '',
   isLoading: false,
   error: false,
 };
@@ -11,7 +12,11 @@ const initialState = {
 export const participantSlise = createSlice({
   name: 'participants',
   initialState,
-  reducers: {},
+  reducers: {
+    updateParticipantFilter: (state, { payload }) => {
+      state.filter = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(registerParticipant.fulfilled, state => {
@@ -33,6 +38,7 @@ export const participantSlise = createSlice({
   },
   selectors: {
     selectParticipants: state => state.participants,
+    selectParticipantsFilter: state => state.filter,
     selectTitle: state => state.title,
     selectIsLoadingParticipant: state => state.isLoading,
     selectErrorParticipant: state => state.error,
@@ -46,4 +52,6 @@ export const {
   selectIsLoadingParticipant,
   selectErrorParticipant,
   selectTitle,
+  selectParticipantsFilter,
 } = participantSlise.selectors;
+export const { updateParticipantFilter } = participantSlise.actions;
