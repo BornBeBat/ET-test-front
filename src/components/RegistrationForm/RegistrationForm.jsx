@@ -5,8 +5,14 @@ import { CustomInput } from '../CustomInput/CustomInput';
 import s from './RegistrationForm.module.css';
 import { hearList } from '../../constant/hearList';
 import { registerSchema } from '../../schemas/registerSchema';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registerParticipant } from '../../myRedux';
 
 export const RegistrationForm = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,10 +22,13 @@ export const RegistrationForm = () => {
     resolver: yupResolver(registerSchema),
     shouldUnregister: true,
   });
-  console.log(errors);
   const onSubmit = data => {
-    console.log(errors);
-    console.log(data);
+    data.event = id;
+    dispatch(registerParticipant(data))
+      .unwrap()
+      .then(() => {
+        navigate(`/participants/${id}`);
+      });
   };
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
