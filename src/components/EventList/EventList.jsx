@@ -8,6 +8,7 @@ import s from './EventList.module.css';
 export const EventList = () => {
   const events = useSelector(selectEvents);
   const observerLoader = useRef();
+  const loadedPage = useRef(null);
   const lastItem = createRef();
   const page = useSelector(selectPage);
   const error = useSelector(selectError);
@@ -16,9 +17,10 @@ export const EventList = () => {
 
   useEffect(() => {
     const actionInSight = entries => {
-      if (error) return;
+      if (error || loadedPage.current === page) return;
       if (entries[0].isIntersecting) {
         dispatch(fetchEvents({ page, ...filter }));
+        loadedPage.current = page;
       }
     };
     if (observerLoader.current) {

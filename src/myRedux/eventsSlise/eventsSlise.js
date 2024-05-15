@@ -46,12 +46,19 @@ export const eventsSlise = createSlice({
     selectError: state => state.error,
     selectFilter: state => state.filter,
     selectFirstLoad: state => state.firstLoad,
+    selectEventsIsLoading: state => state.isLoading,
   },
 });
 
 export const eventsReducer = eventsSlise.reducer;
 
-export const { selectEvents, selectPage, selectError, selectFilter, selectFirstLoad } =
-  eventsSlise.selectors;
+export const {
+  selectEvents,
+  selectPage,
+  selectError,
+  selectFilter,
+  selectFirstLoad,
+  selectEventsIsLoading,
+} = eventsSlise.selectors;
 
 export const { updateFilter, updateFirstLoad } = eventsSlise.actions;

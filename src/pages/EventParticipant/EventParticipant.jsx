@@ -4,7 +4,7 @@ import { getEventById, selectIsLoadingParticipant, selectTitle } from '../../myR
 import { useEffect } from 'react';
 
 import s from './EventParticipant.module.css';
-import { ParticipantFilter, ParticipantList } from '../../components';
+import { Loader, ParticipantFilter, ParticipantList } from '../../components';
 
 const EventParticipant = () => {
   const { id } = useParams();
@@ -25,6 +25,7 @@ const EventParticipant = () => {
           <ParticipantList />
         </>
       )}
+      {isLoading && <Loader />}
     </>
   );
 };
