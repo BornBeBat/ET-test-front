@@ -49,7 +49,7 @@ export const SortPopUp = ({ setIsOpenPopUp, boxRef }) => {
             className={s.button}
             onClick={() => handleClick(el.value)}
             type="button"
-            disabled={el.value === filter}
+            disabled={JSON.stringify(el.value) === JSON.stringify(filter)}
           >
             {el.title}
           </button>
