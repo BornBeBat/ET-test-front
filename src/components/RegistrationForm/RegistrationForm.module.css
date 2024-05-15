@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  gap: 2rem;
+}
+
+.fieldset {
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+
+.legend {
+  margin-bottom: 12px;
+}
+
+.label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.title {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+.error {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  top: 20px;
+}

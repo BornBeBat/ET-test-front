@@ -1,0 +1,29 @@
+.wrapper {
+  position: relative;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 8px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 8px;
+  transition: border-color cubic-bezier(0.075, 0.82, 0.165, 1) 350ms;
+  &:hover,
+  &:focus {
+    border-color: blue;
+  }
+}
+
+.error {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  top: 73px;
+}
