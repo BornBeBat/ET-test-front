@@ -10,7 +10,6 @@ export const SortPopUp = ({ setIsOpenPopUp, boxRef }) => {
 
   useEffect(() => {
     const handleCloseList = e => {
-      console.log(e.target.closest('div'));
       if (e.target.closest('div') !== boxRef.current) {
         setIsOpenPopUp(false);
       }
